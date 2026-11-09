@@ -1,0 +1,17 @@
+# Endereço oficial: https://www.higicloud.com.br (o mesmo das canonicals e do sitemap)
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^higicloud\.com\.br$ [NC]
+RewriteRule ^(.*)$ https://www.higicloud.com.br/$1 [R=301,L]
+
+# Página 404 do próprio site
+ErrorDocument 404 /404.html
+
+# Cache longo para CSS, JS e imagens (as URLs de CSS/JS já mudam com ?v= a cada versão)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
